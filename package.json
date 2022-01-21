@@ -4,7 +4,13 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test_server": "jest ./ --passWithNoTests",
+    "test_client": "cd client && npm test",
+    "test": "concurrently \"yarn test_server\" \"yarn test_client\"",
+    "start": "concurrently \"npm run server\" \"npm run client\"",
+    "server": "node server.js",
+    "client": "cd client && npm start",
+    "build": "cd client && yarn build"
   },
   "repository": {
     "type": "git",
